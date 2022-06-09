@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "357179339774",
+    "project_id": "matrix-audit",
+    "storage_bucket": "matrix-audit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:357179339774:android:634e8136871210151f86af",
+        "android_client_info": {
+          "package_name": "com.kjcreations.matrix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "357179339774-fl342sosq12t19s2c5hgqk3685r1qfp0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kjcreations.matrix",
+            "certificate_hash": "d532d2b1e9092e95825c89fefaa62ebea3a19f76"
+          }
+        },
+        {
+          "client_id": "357179339774-rsp3pm85t59ttqtep1p03e6e3ghdel9j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJbF5UzCckhYmpE5y_jFjTqgOlZ3ztgpw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "357179339774-rsp3pm85t59ttqtep1p03e6e3ghdel9j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
