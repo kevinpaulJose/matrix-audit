@@ -34,5 +34,6 @@ export const dateToStandard = (date) => {
   if (month.length == 1) {
     month = `0${month}`;
   }
-  return `${year}-${month}-01`;
+  // alert();
+  return `${year}-${month}-${date.getDate()}`;
 };

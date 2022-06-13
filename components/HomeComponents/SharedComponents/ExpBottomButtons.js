@@ -4,14 +4,19 @@ import { Alert } from "react-native";
 import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
 import { theme, windowwidth } from "../../../utils/theme";
 
-export default function ExpBottomButtons({ save, navigation, saving }) {
+export default function ExpBottomButtons({
+  save,
+  navigation,
+  saving,
+  discard,
+}) {
   return (
     <View
       style={{
         flexDirection: "row",
         flexWrap: "wrap",
         position: "absolute",
-        bottom: 40,
+        bottom: 70,
         shadowColor: "#000",
         shadowOffset: {
           width: 0,
@@ -26,23 +31,7 @@ export default function ExpBottomButtons({ save, navigation, saving }) {
     >
       <TouchableOpacity
         onPress={() => {
-          // this.validateForm();
-          //   this.logoutLogin();
-          Alert.alert(
-            "Discard changes?",
-            "This will discard all the changes done in the current page.",
-            [
-              {
-                text: "DISCARD",
-                onPress: () => navigation.pop(),
-                style: "destructive",
-              },
-              {
-                text: "Keep changes",
-                onPress: () => console.log("Cancel Pressed"),
-              },
-            ]
-          );
+          discard();
         }}
         activeOpacity={0.8}
         disabled={saving}
@@ -66,7 +55,7 @@ export default function ExpBottomButtons({ save, navigation, saving }) {
             fontSize: 16,
           }}
         >
-          Discard
+          Back
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
@@ -93,35 +82,25 @@ export default function ExpBottomButtons({ save, navigation, saving }) {
           elevation: 2,
           // marginTop: 10,
           marginLeft: 10,
+          height: 50,
+          justifyContent: "center",
         }}
       >
-        <LinearGradient
-          start={{ x: 0.5, y: 0.3 }}
-          // Button Linear Gradient
-          colors={[theme.mainAccent, theme.mainAccentSecondary]}
-          style={{
-            //   padding: 15,
-            width: (windowwidth - 40) / 2 - 20,
-            borderRadius: 5,
-            height: 50,
-            justifyContent: "center",
-          }}
-        >
-          {saving ? (
-            <ActivityIndicator color={theme.white} size={16} />
-          ) : (
-            <Text
-              style={{
-                textAlign: "center",
-                color: theme.white,
-                fontWeight: "bold",
-                fontSize: 16,
-              }}
-            >
-              Save
-            </Text>
-          )}
-        </LinearGradient>
+        {saving ? (
+          <ActivityIndicator color={theme.white} size={16} />
+        ) : (
+          <Text
+            style={{
+              textAlign: "center",
+              color: theme.white,
+              fontWeight: "bold",
+              fontSize: 16,
+            }}
+          >
+            Save
+          </Text>
+        )}
+        {/* </LinearGradient> */}
       </TouchableOpacity>
     </View>
   );

@@ -27,6 +27,7 @@ import { StatusBar } from "react-native";
 import RNDateTimePicker, {
   DateTimePickerAndroid,
 } from "@react-native-community/datetimepicker";
+import { getAuth, signOut } from "firebase/auth";
 
 const mapStateToProps = (state) => {
   return {
@@ -50,6 +51,31 @@ class HomeComponent extends React.Component {
   componentDidMount() {
     console.log(this.state.selectedMonth);
   }
+
+  logoutLogin = () => {
+    Alert.alert("Sign out?", "This will signout from the application.", [
+      {
+        text: "Log Out",
+        onPress: () => {
+          const auth = getAuth();
+          signOut(auth)
+            .then(() => {
+              this.props.removeUser();
+              // console.log("Signed out");
+            })
+            .catch((error) => {
+              // An error happened.
+              console.log(error.message);
+            });
+        },
+        style: "destructive",
+      },
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+      },
+    ]);
+  };
 
   render() {
     return (
@@ -169,8 +195,11 @@ class HomeComponent extends React.Component {
           >
             <TouchableOpacity
               onPress={() => {
-                // this.validateForm();
-                //   this.logoutLogin();
+                let d = new Date();
+                d.setDate(d.getDate() - 1);
+                this.props.navigation.navigate("datatab", {
+                  date: dateToStandard(d),
+                });
               }}
               activeOpacity={0.8}
               disabled={this.state.loading}
@@ -221,8 +250,10 @@ class HomeComponent extends React.Component {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                // this.validateForm();
-                //   this.logoutLogin();
+                // console.log(dateToStandard(new Date()));
+                this.props.navigation.navigate("datatab", {
+                  date: dateToStandard(new Date()),
+                });
               }}
               activeOpacity={0.8}
               disabled={this.state.loading}
@@ -282,14 +313,13 @@ class HomeComponent extends React.Component {
               alignSelf: "center",
               // marginTop: 20,
               position: "absolute",
-              bottom: Platform.OS == "android" ? 40 : 100,
+              // bottom: Platform.OS == "android" ? 40 : 100,
+              bottom: 100,
             }}
           >
             <TouchableOpacity
               onPress={() => {
-                // this.validateForm();
-                //   this.logoutLogin();
-                // alert("Pressed");
+                this.logoutLogin();
               }}
               activeOpacity={0.5}
               disabled={this.state.loading}

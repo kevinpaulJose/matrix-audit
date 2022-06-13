@@ -12,3 +12,4 @@ export const theme = {
 
 export const windowwidth = Dimensions.get("window").width;
 export const windowheight = Dimensions.get("window").height;
+export const adminUser = "bkevin1999@gmail.com";
