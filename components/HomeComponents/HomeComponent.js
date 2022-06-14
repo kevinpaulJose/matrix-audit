@@ -350,6 +350,7 @@ class HomeComponent extends React.Component {
               onPress={() => {
                 // this.validateForm();
                 //   this.logoutLogin();
+                this.props.navigation.navigate("reports");
               }}
               activeOpacity={0.5}
               disabled={this.state.loading}

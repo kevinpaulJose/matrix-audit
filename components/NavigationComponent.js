@@ -22,6 +22,7 @@ import HomeComponent from "./HomeComponents/HomeComponent";
 import { theme } from "../utils/theme";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import ExpensesComponent from "./HomeComponents/DataTabsComponent/ExpensesComponent";
+import ReportsComponent from "./HomeComponents/ReportsComponent/ReportsComponent";
 
 const mapStateToProps = (state) => {
   return {
@@ -118,6 +119,23 @@ class Navigator extends React.Component {
               }}
               name="datatab"
               component={ExpensesComponent}
+            />
+            <Stack.Screen
+              options={{
+                //   headerTitle: () => <this.logoTitle />,
+                headerStyle: {
+                  elevation: 0,
+                  shadowOpacity: 0,
+                  backgroundColor: theme.white,
+                },
+                //   headerRight: () => <this.headerIcon />,
+                headerShown: false,
+                headerTitle: "",
+                headerShadowVisible: false,
+                headerTitleAlign: "center",
+              }}
+              name="reports"
+              component={ReportsComponent}
             />
           </Stack.Navigator>
         </NavigationContainer>

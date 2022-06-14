@@ -100,6 +100,47 @@ export const updateSales = async (data, date) => {
   });
 };
 
+export const getReportData = async (dateRange) => {
+  let fruitBillTotal = 0.0;
+  let salesTotal = 0.0;
+  let expenseTotal = 0.0;
+  let totalTotal = 0.0;
+  let upiTotal = 0.0;
+  let expenses = [];
+  let allData = [];
+  const salesCollection = collection(firedb, "sales");
+  for (let date of dateRange) {
+    const q = query(salesCollection, where("readableDate", "==", date));
+    const querySnapshot = await getDocs(q);
+    if (!querySnapshot.empty) {
+      querySnapshot.forEach((doc) => {
+        allData.push(doc.data());
+      });
+    }
+  }
+  for (let sale of allData) {
+    expenseTotal += sale.expenseTotal;
+    salesTotal += sale.salesTotal;
+    totalTotal += sale.total;
+    upiTotal += sale.upi;
+    expenses.push(sale.expenses);
+    const currentFriuitAmount = sale.expenses.filter(
+      (v) => v.title == "Fruit Bill"
+    )[0].amount;
+    fruitBillTotal += parseFloat(currentFriuitAmount);
+  }
+  const retData = {
+    expenseTotal: expenseTotal,
+    salesTotal: salesTotal,
+    totalTotal: totalTotal,
+    upiTotal: upiTotal,
+    expenses: expenses,
+    fruitBillTotal: fruitBillTotal,
+  };
+  console.log(retData);
+  return retData;
+};
+
 export const deletePending = async (id) => {
   const downloadRef = collection(firedb, "downloads");
   const q = query(downloadRef, where("id", "==", id));

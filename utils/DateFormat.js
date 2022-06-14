@@ -37,3 +37,19 @@ export const dateToStandard = (date) => {
   // alert();
   return `${year}-${month}-${date.getDate()}`;
 };
+
+const getDaysArray = function (start, end) {
+  for (
+    var arr = [], dt = new Date(start);
+    dt <= new Date(end);
+    dt.setDate(dt.getDate() + 1)
+  ) {
+    arr.push(dateToStandard(new Date(dt)));
+  }
+  return arr;
+};
+
+export const getListOfDates = (start, end) => {
+  let daylist = getDaysArray(new Date(start), new Date(end));
+  return daylist;
+};
