@@ -14,7 +14,7 @@ export default function OverAllReport({
 }) {
   return (
     <View
-      key={key}
+      key={"123876"}
       style={{
         backgroundColor: "white",
         width: windowwidth - 40,
@@ -45,48 +45,128 @@ export default function OverAllReport({
           Sales / Expense summary
         </Text>
       </View>
-      <View style={{ flexDirection: "row" }}>
-        <View style={{ flex: 1 }}>
-          <Text style={{ fontSize: 20, color: theme.realDark }}>
+      <View style={{ flexDirection: "row", marginLeft: 10 }}>
+        <View style={{ flex: 1, marginTop: 10 }}>
+          <Text
+            style={{
+              fontSize: 20,
+              color: theme.realDark,
+              fontWeight: "bold",
+              textAlign: "right",
+              marginRight: 10,
+            }}
+          >
             Fruits Bill:
           </Text>
         </View>
-        <View style={{ flex: 1 }}>
-          <Text>{`₹${friutBillTotal}`}</Text>
+        <View style={{ flex: 1, marginTop: 10 }}>
+          <Text
+            style={{ fontSize: 20, color: theme.realDark }}
+          >{`₹${friutBillTotal}`}</Text>
         </View>
       </View>
-      <View style={{ flexDirection: "row" }}>
-        <View style={{ flex: 1 }}>
-          <Text>Expenses:</Text>
+      <View style={{ flexDirection: "row", marginLeft: 10 }}>
+        <View style={{ flex: 1, marginTop: 10 }}>
+          <Text
+            style={{
+              fontSize: 20,
+              color: theme.realDark,
+              fontWeight: "bold",
+              textAlign: "right",
+              marginRight: 10,
+            }}
+          >
+            Expenses:
+          </Text>
         </View>
-        <View style={{ flex: 1 }}>
-          <Text>{`₹${expensesTotal}`}</Text>
-        </View>
-      </View>
-      <View style={{ flexDirection: "row" }}>
-        <View style={{ flex: 1 }}>
-          <Text>Cash Flow:</Text>
-        </View>
-        <View style={{ flex: 1 }}>
-          <Text>{`₹${salesTotal}`}</Text>
-        </View>
-      </View>
-      <View style={{ flexDirection: "row" }}>
-        <View style={{ flex: 1 }}>
-          <Text>UPI:</Text>
-        </View>
-        <View style={{ flex: 1 }}>
-          <Text>{`₹${upiTotal}`}</Text>
+        <View style={{ flex: 1, marginTop: 10 }}>
+          <Text
+            style={{ fontSize: 20, color: theme.realDark }}
+          >{`₹${expensesTotal}`}</Text>
         </View>
       </View>
-      <View style={{ flexDirection: "row" }}>
-        <View style={{ flex: 1 }}>
-          <Text>Overall:</Text>
+      <View style={{ flexDirection: "row", marginLeft: 10 }}>
+        <View style={{ flex: 1, marginTop: 10 }}>
+          <Text
+            style={{
+              fontSize: 20,
+              color: theme.realDark,
+              fontWeight: "bold",
+              textAlign: "right",
+              marginRight: 10,
+            }}
+          >
+            Cash Flow:
+          </Text>
         </View>
-        <View style={{ flex: 1 }}>
-          <Text>{`₹${totalTotal}`}</Text>
+        <View style={{ flex: 1, marginTop: 10 }}>
+          <Text
+            style={{ fontSize: 20, color: theme.realDark }}
+          >{`₹${salesTotal}`}</Text>
         </View>
       </View>
+      <View style={{ flexDirection: "row", marginLeft: 10 }}>
+        <View style={{ flex: 1, marginTop: 10 }}>
+          <Text
+            style={{
+              fontSize: 20,
+              color: theme.realDark,
+              fontWeight: "bold",
+              textAlign: "right",
+              marginRight: 10,
+            }}
+          >
+            UPI:
+          </Text>
+        </View>
+        <View style={{ flex: 1, marginTop: 10 }}>
+          <Text
+            style={{ fontSize: 20, color: theme.realDark }}
+          >{`₹${upiTotal}`}</Text>
+        </View>
+      </View>
+      <View
+        style={{
+          width: windowwidth / 2,
+          backgroundColor: theme.blank,
+          height: 40,
+          borderRadius: 5,
+          alignSelf: "center",
+          justifyContent: "center",
+          marginBottom: 10,
+          marginTop: 10,
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 1,
+          },
+          shadowOpacity: 0.2,
+          shadowRadius: 1.41,
+
+          elevation: 2,
+        }}
+      >
+        <Text
+          style={{
+            color: theme.realDark,
+            fontWeight: "bold",
+            fontSize: 18,
+            textAlign: "center",
+            // overflow: "hidden",
+          }}
+          // numberOfLines={1}
+        >{`Overall: ₹${totalTotal}`}</Text>
+      </View>
+      {/* <View style={{ flexDirection: "row", marginLeft: 10 }}>
+        <View style={{ flex: 1, marginTop: 10 }}>
+          <Text style={{ fontSize: 20, color: theme.realDark }}>Overall:</Text>
+        </View>
+        <View style={{ flex: 1 }}>
+          <Text
+            style={{ fontSize: 20, color: theme.realDark }}
+          >{`₹${totalTotal}`}</Text>
+        </View>
+      </View> */}
     </View>
   );
 }

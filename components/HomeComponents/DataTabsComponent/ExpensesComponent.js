@@ -201,24 +201,46 @@ class ExpensesComponent extends React.Component {
   };
   changeUPI = (text) => {
     this.setState({ saved: false });
-    let currentUpi = this.state.data[0].upi;
-    let allData = this.state.data;
-    text = text.slice(1, text.length);
-    if (text.trim().length > 0) {
-      if (text.charAt(0) == "0") {
-        currentUpi = parseFloat(text.slice(1, text.length));
-        allData[0].upi = currentUpi;
-        this.setState({ data: allData });
-      } else {
-        currentUpi = parseFloat(text);
-        allData[0].upi = currentUpi;
-        this.setState({ data: allData });
+    let currentData = this.state.data;
+    let currentState = this.state.data[0].upi;
+    // const currentIndex = currentState.findIndex((v) => v.title == title);
+    // console.log();
+    if (text.slice(1, text.length).length > 0) {
+      let finalAmount = text.slice(1, text.length);
+      if (finalAmount.charAt(0) == "0") {
+        finalAmount = finalAmount.slice(1, finalAmount.length);
       }
+      currentState = finalAmount;
+      if (isNaN(parseFloat(currentState))) currentData[0].upi = 0;
+      else currentData[0].upi = parseFloat(currentState);
+
+      this.setState({ data: currentData });
+      // this.calulateExpenseTotal(currentData[0].expenses);
     } else {
-      currentUpi = parseFloat("0");
-      allData[0].upi = currentUpi;
-      this.setState({ data: allData });
+      currentState = 0;
+      currentData[0].upi = 0;
+      this.setState({ data: currentData });
+      // this.calulateExpenseTotal(currentData[0].expenses);
     }
+    // this.setState({ saved: false });
+    // let currentUpi = this.state.data[0].upi;
+    // let allData = this.state.data;
+    // text = text.slice(1, text.length);
+    // if (text.trim().length > 0) {
+    //   if (text.charAt(0) == "0") {
+    //     currentUpi = parseFloat(text.slice(1, text.length));
+    //     allData[0].upi = currentUpi;
+    //     this.setState({ data: allData });
+    //   } else {
+    //     currentUpi = parseFloat(text);
+    //     allData[0].upi = currentUpi;
+    //     this.setState({ data: allData });
+    //   }
+    // } else {
+    //   currentUpi = parseFloat("0");
+    //   allData[0].upi = currentUpi;
+    //   this.setState({ data: allData });
+    // }
   };
   getChangeValue = (value, index) => {
     switch (index) {

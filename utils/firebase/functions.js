@@ -123,7 +123,7 @@ export const getReportData = async (dateRange) => {
     salesTotal += sale.salesTotal;
     totalTotal += sale.total;
     upiTotal += sale.upi;
-    expenses.push(sale.expenses);
+    if (sale.total != 0) expenses.push(sale);
     const currentFriuitAmount = sale.expenses.filter(
       (v) => v.title == "Fruit Bill"
     )[0].amount;
@@ -137,7 +137,7 @@ export const getReportData = async (dateRange) => {
     expenses: expenses,
     fruitBillTotal: fruitBillTotal,
   };
-  console.log(retData);
+  // console.log(retData);
   return retData;
 };
 

@@ -45,6 +45,7 @@ import SalesDisplayComponent from "../SharedComponents/SalesDisplayComponent";
 import ReportDisplayComponent from "../SharedComponents/ReportDisplayComponent";
 import RNDateTimePicker from "@react-native-community/datetimepicker";
 import OverAllReport from "../SharedComponents/OverAllReport";
+import ReportPerCard from "../SharedComponents/ReportPerCard";
 
 const mapStateToProps = (state) => {
   return {
@@ -86,15 +87,31 @@ class ReportsComponent extends React.Component {
 
   render() {
     return (
-      <KeyboardAwareScrollView
-        scrollEnabled={Platform.OS == "ios" ? false : false}
-      >
+      <ScrollView>
+        <TouchableOpacity
+          style={{
+            position: "absolute",
+            // right: 20,
+            zIndex: 100,
+            top: 35,
+            left: 20,
+          }}
+          onPress={() => this.props.navigation.pop()}
+        >
+          <Icon
+            type="ionicon"
+            name="chevron-back"
+            size={18}
+            color={theme.realDark}
+          />
+        </TouchableOpacity>
         <View
           style={{
-            height:
-              windowheight +
-              (Platform.OS == "android" ? StatusBar.currentHeight : 0),
+            // height:
+            //   windowheight +
+            //   (Platform.OS == "android" ? StatusBar.currentHeight : 0),
             backgroundColor: theme.blank,
+            paddingBottom: 30,
           }}
         >
           <View
@@ -274,17 +291,23 @@ class ReportsComponent extends React.Component {
             )}
           </TouchableOpacity>
           {this.state.data.fruitBillTotal != undefined && (
-            <OverAllReport
-              expensesTotal={this.state.data.expenseTotal}
-              friutBillTotal={this.state.data.fruitBillTotal}
-              salesTotal={this.state.data.salesTotal}
-              totalTotal={this.state.data.totalTotal}
-              upiTotal={this.state.data.upiTotal}
-              key={"123876"}
-            />
+            <>
+              <OverAllReport
+                expensesTotal={this.state.data.expenseTotal}
+                friutBillTotal={this.state.data.fruitBillTotal}
+                salesTotal={this.state.data.salesTotal}
+                totalTotal={this.state.data.totalTotal}
+                upiTotal={this.state.data.upiTotal}
+                key={"123876"}
+              />
+              <View style={{ marginTop: 30 }} />
+              {this.state.data.expenses.map((v, i) => (
+                <ReportPerCard sale={v} key={i} />
+              ))}
+            </>
           )}
         </View>
-      </KeyboardAwareScrollView>
+      </ScrollView>
     );
   }
 }
