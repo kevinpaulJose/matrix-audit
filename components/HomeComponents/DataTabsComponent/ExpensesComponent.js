@@ -258,10 +258,11 @@ class ExpensesComponent extends React.Component {
   };
 
   calulateExpenseTotal = (expensesData) => {
-    this.state.data[0].expenseTotal = expensesData.reduce(
-      (total, v) => (total = parseFloat(total) + parseFloat(v.amount)),
-      0
-    );
+    let total = 0;
+    for (let exp of expensesData) {
+      if (exp.title != "Fruit Bill") total += parseInt(exp.amount);
+    }
+    this.state.data[0].expenseTotal = total;
   };
   calculateSalesTotal = (salesData) => {
     let sales = this.state.data[0].sales;
