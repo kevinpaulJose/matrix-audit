@@ -82,6 +82,7 @@ class HomeComponent extends React.Component {
       <SafeAreaView
         style={{
           paddingTop: Platform.OS == "android" ? StatusBar.currentHeight : 0,
+          backgroundColor: theme.white,
         }}
       >
         <View

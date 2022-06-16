@@ -34,7 +34,7 @@ export default function ReportPerCard({ sale }) {
   return (
     <View
       style={{
-        backgroundColor: "white",
+        backgroundColor: theme.white,
         width: windowwidth - 40,
         alignSelf: "center",
         borderWidth: 0,
@@ -57,7 +57,7 @@ export default function ReportPerCard({ sale }) {
         }
         noArrow
         style={{
-          backgroundColor: "white",
+          backgroundColor: theme.white,
           width: windowwidth - 40,
           alignSelf: "center",
           borderWidth: 0,

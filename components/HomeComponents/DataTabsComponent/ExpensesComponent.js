@@ -427,7 +427,7 @@ class ExpensesComponent extends React.Component {
                       this.state.selected == "expenses" ? "bold" : "normal",
                     color:
                       this.state.selected == "expenses"
-                        ? "white"
+                        ? theme.white
                         : theme.realDark,
                   }}
                 >
@@ -454,7 +454,9 @@ class ExpensesComponent extends React.Component {
                     fontWeight:
                       this.state.selected == "sales" ? "bold" : "normal",
                     color:
-                      this.state.selected == "sales" ? "white" : theme.realDark,
+                      this.state.selected == "sales"
+                        ? theme.white
+                        : theme.realDark,
                   }}
                 >
                   Sales
@@ -481,7 +483,7 @@ class ExpensesComponent extends React.Component {
                       this.state.selected == "report" ? "bold" : "normal",
                     color:
                       this.state.selected == "report"
-                        ? "white"
+                        ? theme.white
                         : theme.realDark,
                   }}
                 >

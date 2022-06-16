@@ -278,7 +278,7 @@ export default function ReportDisplayComponent({ data, user, save, total }) {
             style={{
               textAlign: "center",
               fontSize: 20,
-              color: "white",
+              color: theme.white,
               fontWeight: "bold",
             }}
           >{`Total: ₹${total}`}</Text>
@@ -286,7 +286,7 @@ export default function ReportDisplayComponent({ data, user, save, total }) {
             style={{
               textAlign: "center",
               fontSize: 14,
-              color: "white",
+              color: theme.white,
               // fontWeight: "bold",
             }}
           >{`(Save to get total)`}</Text>

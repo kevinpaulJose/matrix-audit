@@ -16,7 +16,7 @@ export default function OverAllReport({
     <View
       key={"123876"}
       style={{
-        backgroundColor: "white",
+        backgroundColor: theme.white,
         width: windowwidth - 40,
         alignSelf: "center",
         marginTop: 20,

@@ -22,7 +22,7 @@ export default function AddItemModal({
           style={{
             width: windowwidth - 60,
             height: windowwidth / 2,
-            backgroundColor: "white",
+            backgroundColor: theme.white,
             marginTop: windowheight / 2 - 60,
             alignSelf: "center",
             shadowColor: "#000",
@@ -90,11 +90,11 @@ export default function AddItemModal({
               onPress={save}
             >
               {saving ? (
-                <ActivityIndicator color={"white"} />
+                <ActivityIndicator color={theme.white} />
               ) : (
                 <Text
                   style={{
-                    color: "white",
+                    color: theme.white,
                     fontSize: 18,
                     textAlign: "center",
                     fontWeight: "bold",

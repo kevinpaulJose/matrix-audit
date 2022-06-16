@@ -276,14 +276,14 @@ class ReportsComponent extends React.Component {
             onPress={this.getData}
           >
             {this.state.loading ? (
-              <ActivityIndicator color={"white"} size={18} />
+              <ActivityIndicator color={theme.white} size={18} />
             ) : (
               <Text
                 style={{
                   textAlign: "center",
                   fontSize: 18,
                   fontWeight: "bold",
-                  color: "white",
+                  color: theme.white,
                 }}
               >
                 Get Report
