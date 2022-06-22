@@ -1,5 +1,5 @@
 import { LinearGradient } from "expo-linear-gradient";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Alert, ScrollView, TextInput } from "react-native";
 import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
 import {
@@ -17,6 +17,71 @@ export default function SalesDisplayComponent({
   changeUpi,
 }) {
   const denomination = ["2000", "500", "200", "100", "50"];
+
+  const [two000, setTwo000] = useState(0);
+  const [five00, setFive00] = useState(0);
+  const [two00, setTwo00] = useState(0);
+  const [one00, setOne00] = useState(0);
+  const [five0, setFive0] = useState(0);
+
+  const getValue = (deno) => {
+    switch (deno) {
+      case "2000":
+        return two000;
+      case "500":
+        return five00;
+      case "200":
+        return two00;
+      case "100":
+        return one00;
+      case "50":
+        return five0;
+    }
+  };
+  const setValue = (deno, quantity) => {
+    if (quantity != "")
+      switch (deno) {
+        case "2000":
+          setTwo000(2000 * parseInt(quantity));
+          break;
+        case "500":
+          setFive00(500 * parseInt(quantity));
+          break;
+        case "200":
+          setTwo00(200 * parseInt(quantity));
+          break;
+        case "100":
+          setOne00(100 * parseInt(quantity));
+          break;
+        case "50":
+          setFive0(50 * parseInt(quantity));
+          break;
+      }
+    else {
+      switch (deno) {
+        case "2000":
+          setTwo000(0);
+          break;
+        case "500":
+          setFive00(0);
+          break;
+        case "200":
+          setTwo00(0);
+          break;
+        case "100":
+          setOne00(0);
+          break;
+        case "50":
+          setFive0(0);
+          break;
+      }
+    }
+  };
+
+  useEffect(() => {
+    data.map((v, i) => setValue(denomination[i], v.toString()));
+  }, []);
+
   return (
     <View style={{ paddingTop: 20 }}>
       <View
@@ -69,7 +134,7 @@ export default function SalesDisplayComponent({
               >
                 <View
                   style={{
-                    flex: 3,
+                    flex: 1,
                     // backgroundColor: "blue",
                     alignItems: "flex-start",
                     justifyContent: "center",
@@ -87,7 +152,25 @@ export default function SalesDisplayComponent({
                 </View>
                 <View
                   style={{
-                    flex: 2,
+                    flex: 1,
+                    // backgroundColor: "blue",
+                    alignItems: "flex-start",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: theme.realDark,
+                      fontSize: 16,
+                      fontWeight: "normal",
+                    }}
+                  >
+                    {"x"}
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    flex: 1,
                     // backgroundColor: "blue",
                     alignItems: "flex-start",
                     justifyContent: "center",
@@ -103,10 +186,31 @@ export default function SalesDisplayComponent({
                       // padding: 5,
                     }}
                     value={data[i].toString()}
-                    onChangeText={(text) => changeSales(text, i)}
+                    onChangeText={(text) => {
+                      changeSales(text, i);
+                      setValue(v, text);
+                    }}
                     // onBlur={(text) => this.changeAmount(text, v.title)}
                     // editable={v.title == "Fruit Bill" && user != adminUser}
                   />
+                </View>
+                <View
+                  style={{
+                    flex: 1,
+                    // backgroundColor: "blue",
+                    alignItems: "flex-start",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: theme.secondryText,
+                      fontSize: 16,
+                      fontWeight: "normal",
+                    }}
+                  >
+                    {"₹" + getValue(v)}
+                  </Text>
                 </View>
               </View>
             );

@@ -344,25 +344,25 @@ class ExpensesComponent extends React.Component {
                   Platform.OS == "android" ? StatusBar.currentHeight : 0,
               }}
             >
-              {this.props.user.data[0] == adminUser && (
-                <TouchableOpacity
-                  activeOpacity={0.8}
-                  onPress={this.triggerModal}
-                  style={{
-                    position: "absolute",
-                    right: 40,
-                    zIndex: 500,
-                    top: 30,
-                  }}
-                >
-                  <Icon
-                    type="ionicon"
-                    name="add"
-                    size={28}
-                    color={theme.mainAccentSecondary}
-                  />
-                </TouchableOpacity>
-              )}
+              {/* {this.props.user.data[0] == adminUser && ( */}
+              <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={this.triggerModal}
+                style={{
+                  position: "absolute",
+                  right: 40,
+                  zIndex: 500,
+                  top: 30,
+                }}
+              >
+                <Icon
+                  type="ionicon"
+                  name="add"
+                  size={28}
+                  color={theme.mainAccentSecondary}
+                />
+              </TouchableOpacity>
+              {/* )} */}
 
               <TouchableOpacity
                 style={{

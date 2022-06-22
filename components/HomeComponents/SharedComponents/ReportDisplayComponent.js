@@ -45,7 +45,7 @@ export default function ReportDisplayComponent({ data, user, save, total }) {
           }}
         >
           {data.expenses.map((v, i) => {
-            if (v.title == "Fruit Bill" && adminUser == user) {
+            if (v.title == "Fruit Bill") {
               return (
                 <View
                   key={i + Math.random()}

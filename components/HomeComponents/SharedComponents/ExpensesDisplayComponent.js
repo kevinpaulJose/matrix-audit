@@ -100,13 +100,13 @@ export default function ExpensesDisplayComponent({
                   }}
                   value={"₹" + v.amount}
                   onChangeText={(text) => {
-                    if (v.title == "Fruit Bill") {
-                      if (user == adminUser) {
-                        changeAmount(text, v.title);
-                      }
-                    } else {
-                      changeAmount(text, v.title);
-                    }
+                    // if (v.title == "Fruit Bill") {
+                    // if (user == adminUser) {
+                    changeAmount(text, v.title);
+                    // }
+                    // } else {
+                    changeAmount(text, v.title);
+                    // }
                   }}
                   // onBlur={(text) => this.changeAmount(text, v.title)}
                   // editable={v.title == "Fruit Bill" && user != adminUser}
